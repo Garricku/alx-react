@@ -12,7 +12,7 @@ module.exports = {
 	    header: './src/header.js',
             body: './src/body.js',
             footer: './src/footer.js',
-    }
+    },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'public'),
@@ -20,7 +20,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {

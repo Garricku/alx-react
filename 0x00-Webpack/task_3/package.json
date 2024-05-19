@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "webpack-dev-server --mode development --open --port 8564"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "file-loader": "^6.2.0",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
