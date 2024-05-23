@@ -1,0 +1,19 @@
+.Notifications {
+    padding: 10px;
+    border: .1rem solid rgb(219, 44, 70);
+    border-style: dashed;
+}
+
+.Notifications li[data-priority="default"] {
+  color: blue;
+}
+
+.Notifications li[data-priority="urgent"] {
+  color: red;
+}
+
+.Notifications button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
