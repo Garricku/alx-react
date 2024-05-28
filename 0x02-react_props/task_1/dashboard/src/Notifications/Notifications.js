@@ -19,7 +19,7 @@ export default function notifications() {
             <ul>
                 <li data-priority="default">New course available</li>
                 <li data-priority="urgent">New resume available</li>
-                <li data-priority="urgent" dangerouslySetInnerHTML={{ __html: getLatestNotification() }} />
+                <li data-priority="urgent">{ getLatestNotification() }</li>
             </ul>
         </div>
     );
