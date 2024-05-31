@@ -1,13 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import Notifications from './Notifications';
+import $ from 'jquery';
 
 
-const root = document.getElementById('root');
-
-ReactDOM.render(
-    <Notifications />,
-    <App />,
-    root
-);
+$(document).ready(() => {
+    $('body').append(Notifications);
+    $('body').append(App);
+});
