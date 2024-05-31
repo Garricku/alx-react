@@ -1,3 +1,4 @@
+import React from "react";
 import { getFullYear } from './utils';
 import { getFooterCopy } from './utils';
 import { getLatestNotification } from './utils';
