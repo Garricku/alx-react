@@ -1,12 +1,13 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
-    entry: '../src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-    },
+  mode: 'development',
+  entry: path.resolve(__dirname, '../src/index.js'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+  },
+  module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -35,11 +36,14 @@ module.exports = {
         ],
       },
     ],
-    resolve: {
+  },
+  resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
     },
-    devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     port: 9000,
     hot: true,
   },
