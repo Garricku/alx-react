@@ -38,7 +38,7 @@ class Notifications extends Component {
               <img src={closeIcon} alt="close icon" width="10px" />
             </button>
             {this.props.listNotifications.length !== 0 ? <p>Here is the list of notifications</p> : null}
-            <ul>
+            <ul className={css(styles.notificationList)}> {/* Apply media query styles */}
               {this.props.listNotifications.length === 0 ? (
                 <NotificationItem type="default" value="No new notification for now" />
               ) : null}
@@ -76,6 +76,15 @@ const styles = StyleSheet.create({
     padding: "10px",
     border: ".1rem solid rgb(219, 44, 70)",
     borderStyle: "dashed",
+    "@media (max-width: 900px)": {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      padding: 0,
+      fontSize: "20px",
+    },
   },
   closeButton: {
     color: "#3a3a3a",
@@ -88,6 +97,10 @@ const styles = StyleSheet.create({
     top: "3px",
     cursor: "pointer",
     outline: "none",
+  },
+  notificationList: {
+    padding: 0,
+    listStyle: "none",
   },
 });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Notifications.css";
+import { StyleSheet, css } from "aphrodite"; // Import Aphrodite
 import PropTypes from "prop-types";
 
 class NotificationItem extends React.PureComponent {
@@ -8,11 +8,22 @@ class NotificationItem extends React.PureComponent {
     return (
       <>
         {type && value ? (
-          <li onClick={() => markAsRead(id)} data-notification-type={type}>
+          <li
+            onClick={() => markAsRead(id)}
+            data-notification-type={type}
+            className={css(styles.notificationItem)} // Apply Aphrodite styles
+          >
             {value}
           </li>
         ) : null}
-        {html ? <li onClick={() => markAsRead(id)} data-urgent dangerouslySetInnerHTML={{ __html: html }}></li> : null}
+        {html ? (
+          <li
+            onClick={() => markAsRead(id)}
+            data-urgent
+            dangerouslySetInnerHTML={{ __html: html }}
+            className={css(styles.notificationItem)} // Apply Aphrodite styles
+          ></li>
+        ) : null}
       </>
     );
   }
@@ -35,5 +46,15 @@ NotificationItem.defaultProps = {
   },
   id: 0,
 };
+
+// Define Aphrodite styles
+const styles = StyleSheet.create({
+  notificationItem: {
+    width: "100%",
+    borderBottom: "1px solid black",
+    fontSize: "20px",
+    padding: "10px 8px",
+  },
+});
 
 export default NotificationItem;
