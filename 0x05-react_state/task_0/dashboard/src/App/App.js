@@ -13,7 +13,18 @@ class App extends React.Component {
     super(props);
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.state = {
+    displayDrawer: false,
+    };
   }
+
+  handleDisplayDrawer = () => {
+    this.setState({ displayDrawer: true });
+  };
+
+  handleHideDrawer = () => {
+    this.setState({ displayDrawer: false });
+  };
 
   listCourses = [
     { id: 1, name: "ES6", credit: 60 },
@@ -46,9 +57,9 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.app)}> {/* Apply Aphrodite styles */}
+        <div className={css(styles.app)}>
           <div className={css(styles.headingSection)}>
-            <Notifications listNotifications={this.listNotifications} />
+            <Notifications displayDrawer={this.state.displayDrawer} handleDisplayDrawer={this.handleDisplayDrawer} handleHideDrawer={this.handleHideDrawer} listNotifications={this.listNotifications} />
             <Header />
           </div>
           {this.props.isLoggedIn ? (

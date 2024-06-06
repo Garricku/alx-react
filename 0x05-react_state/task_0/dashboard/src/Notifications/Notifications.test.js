@@ -128,4 +128,18 @@ describe("onclick event behaves as it should", () => {
     expect(spy).toBeCalledWith(1);
     spy.mockRestore();
   });
+
+  it('should call handleDisplayDrawer when menu item is clicked', () => {
+    const handleDisplayDrawerSpy = jest.fn();
+    const wrapper = shallow(<Notifications handleDisplayDrawer={handleDisplayDrawerSpy} />);
+    wrapper.find('button').simulate('click');
+    expect(handleDisplayDrawerSpy).toHaveBeenCalled();
+  });
+
+  it('should call handleHideDrawer when close button is clicked', () => {
+    const handleHideDrawerSpy = jest.fn();
+    const wrapper = shallow(<Notifications handleHideDrawer={handleHideDrawerSpy} />);
+    wrapper.find('button').simulate('click');
+    expect(handleHideDrawerSpy).toHaveBeenCalled();
+  });
 });

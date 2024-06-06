@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { StyleSheet, css, keyframes } from "aphrodite"; // Import Aphrodite
+import PropTypes from "prop-types";
 import closeIcon from "../assets/close-icon.png";
 import NotificationItem from "./NotificationItem";
-import PropTypes from "prop-types";
 import NotificationItemShape from "./NotificationItemShape";
+import { StyleSheet, css } from "aphrodite";
 
 class Notifications extends Component {
   constructor(props) {
     super(props);
-
     this.markAsRead = this.markAsRead.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.length > this.props.listNotifications.length;
-  }
+  static propTypes = {
+    displayDrawer: PropTypes.bool.isRequired,
+    handleDisplayDrawer: PropTypes.func.isRequired,
+    handleHideDrawer: PropTypes.func.isRequired,
+    listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  };
+
+  static defaultProps = {
+    displayDrawer: false,
+    handleDisplayDrawer: () => {},
+    handleHideDrawer: () => {},
+    listNotifications: [],
+  };
 
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
@@ -24,20 +33,20 @@ class Notifications extends Component {
     return (
       <React.Fragment>
         <div className={css(styles.menuItem)}>
-          <p>Your notifications</p>
+          <p onClick={this.props.handleDisplayDrawer}>Your notifications</p>
         </div>
-        {this.props.displayDrawer ? (
+        {this.props.displayDrawer && (
           <div className={css(styles.notifications)}>
             <button
               className={css(styles.closeButton)}
               aria-label="Close"
-              onClick={(e) => {
-                console.log("Close button has been clicked");
-              }}
+              onClick={this.props.handleHideDrawer}
             >
               <img src={closeIcon} alt="close icon" width="10px" />
             </button>
-            {this.props.listNotifications.length !== 0 ? <p>Here is the list of notifications</p> : null}
+            {this.props.listNotifications.length !== 0 ? (
+              <p>Here is the list of notifications</p>
+            ) : null}
             <ul className={css(styles.notificationList)}>
               {this.props.listNotifications.length === 0 ? (
                 <NotificationItem type="default" value="No new notification for now" />
@@ -54,7 +63,7 @@ class Notifications extends Component {
               ))}
             </ul>
           </div>
-        ) : null}
+        )}
       </React.Fragment>
     );
   }
@@ -70,7 +79,6 @@ Notifications.defaultProps = {
   listNotifications: [],
 };
 
-// Define Aphrodite styles
 const bounce = keyframes({
   "0%": { transform: "translateY(0)" },
   "50%": { transform: "translateY(-5px)" },

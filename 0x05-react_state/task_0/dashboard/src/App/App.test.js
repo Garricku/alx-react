@@ -71,6 +71,25 @@ describe("When ctrl + h is pressed", () => {
     wrapper.unmount();
   });
 
+  it('should have default state displayDrawer set to false', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
+
+  it('should update state displayDrawer to true when handleDisplayDrawer is called', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(true);
+  });
+
+
+it('should update state displayDrawer to false when handleHideDrawer is called', () => {
+    const wrapper = shallow(<App />);
+    wrapper.setState({ displayDrawer: true }); // Set initial state to true
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
+
   it('checks that the alert is "Logging you out"', () => {
     const wrapper = mount(<App />);
     const spy = jest.spyOn(window, "alert");
