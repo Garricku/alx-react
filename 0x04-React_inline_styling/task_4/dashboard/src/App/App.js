@@ -46,7 +46,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.app)}> {/* Apply Aphrodite styles */}
+        <div className={css(styles.app)}>
           <div className={css(styles.headingSection)}>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
