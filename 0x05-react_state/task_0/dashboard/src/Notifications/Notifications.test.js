@@ -142,4 +142,16 @@ describe("onclick event behaves as it should", () => {
     wrapper.find('button').simulate('click');
     expect(handleHideDrawerSpy).toHaveBeenCalled();
   });
+
+  it('should enable submit button when both email and password are not empty', () => {
+    const wrapper = shallow(<Login />);
+    wrapper.setState({ email: 'test@example.com', password: 'password123' });
+    expect(wrapper.find('input[type="submit"]').prop('disabled')).toBe(false);
+  });
+
+  it('should disable submit button when either email or password is empty', () => {
+    const wrapper = shallow(<Login />);
+    wrapper.setState({ email: 'test@example.com', password: '' });
+    expect(wrapper.find('input[type="submit"]').prop('disabled')).toBe(true);
+  });
 });
