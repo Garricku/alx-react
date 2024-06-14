@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, css } from "aphrodite"; // Import Aphrodite
+import { StyleSheet, css } from "aphrodite";
 import CourseListRow from "./CourseListRow";
 import PropTypes from "prop-types";
 import CourseShape from "./CourseShape";
@@ -30,7 +30,6 @@ CourseList.defaultProps = {
   listCourses: [],
 };
 
-// Define Aphrodite styles
 const styles = StyleSheet.create({
   table: {
     marginTop: "2em",
@@ -40,6 +39,9 @@ const styles = StyleSheet.create({
     marginBottom: "15em",
     marginLeft: "auto",
     marginRight: "auto",
+  },
+  rowChecked: {
+    backgroundColor: '#e6e4e4',
   },
   th: {
     borderBottom: "1px solid #ddd",
