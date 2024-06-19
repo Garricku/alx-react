@@ -41,7 +41,8 @@
         "inline-source-map": "^0.6.2",
         "prop-types": "^15.8.1",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "redux-thunk": "^3.1.0"
     },
     "jest": {
         "setupFiles": [
