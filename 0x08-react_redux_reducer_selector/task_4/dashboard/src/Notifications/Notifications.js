@@ -4,6 +4,10 @@ import closeIcon from "../assets/close-icon.png";
 import NotificationItem from "./NotificationItem";
 import NotificationItemShape from "./NotificationItemShape";
 import { StyleSheet, css } from "aphrodite";
+import { schema } from 'normalizr';
+
+// Define the notification schema
+const notificationSchema = new schema.Entity('notifications', {}, { idAttribute: 'id' });
 
 class Notifications extends Component {
   constructor(props) {
@@ -124,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Notifications;
+export default { Notifications, notificationSchema };
